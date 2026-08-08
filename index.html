@@ -3,105 +3,371 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Nguyen Manh Quynh – Supply Planner</title>
+<title>Nguyễn Mạnh Quỳnh — Supply Chain Journey</title>
 <style>
+  :root {
+    --cream: #f7f1e8;
+    --terracotta: #c96a4c;
+    --dark: #2b2620;
+    --grey: #6b645c;
+    --line: #e4dccd;
+    --card-bg: #ffffff;
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    line-height: 1.6;
-    color: #2b2b2b;
-    background: #fafafa;
+    font-family: 'Georgia', 'Segoe UI', serif;
+    background: var(--cream);
+    color: var(--dark);
+    line-height: 1.7;
   }
-  .container { max-width: 800px; margin: 0 auto; padding: 60px 24px; }
-  header { margin-bottom: 48px; }
-  h1 { font-size: 32px; margin-bottom: 4px; }
-  .title { font-size: 18px; color: #555; margin-bottom: 12px; }
-  .contact { font-size: 14px; color: #666; }
-  .contact a { color: #2563eb; text-decoration: none; margin-right: 16px; }
-  section { margin-bottom: 40px; }
-  h2 {
-    font-size: 20px;
-    border-bottom: 2px solid #2563eb;
-    padding-bottom: 6px;
-    margin-bottom: 16px;
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 28px; }
+
+  /* NAV */
+  nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 28px 0; border-bottom: 1px solid var(--line);
   }
-  .job { margin-bottom: 24px; }
-  .job-header { display: flex; justify-content: space-between; flex-wrap: wrap; }
-  .job-title { font-weight: 600; font-size: 16px; }
-  .job-date { color: #777; font-size: 14px; }
-  ul { margin-left: 20px; margin-top: 8px; }
-  li { margin-bottom: 6px; }
-  .skill-group { margin-bottom: 14px; }
-  .skill-label { font-weight: 600; }
-  footer { text-align: center; color: #999; font-size: 13px; margin-top: 60px; }
+  nav .logo { font-weight: bold; letter-spacing: 1px; font-size: 15px; }
+  nav a { color: var(--dark); text-decoration: none; margin-left: 28px; font-size: 14px; }
+  nav a:hover { color: var(--terracotta); }
+
+  /* HERO */
+  .hero {
+    display: flex; align-items: center; gap: 56px;
+    padding: 90px 0 100px; flex-wrap: wrap;
+  }
+  .hero-text { flex: 1; min-width: 300px; }
+  .hero-tag { color: var(--terracotta); font-size: 13px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 18px; }
+  .hero h1 { font-size: 44px; line-height: 1.25; margin-bottom: 22px; font-weight: normal; }
+  .hero p { color: var(--grey); font-size: 17px; max-width: 460px; }
+  .hero-photo {
+    width: 300px; height: 360px; border-radius: 140px 140px 20px 20px;
+    background: linear-gradient(160deg, #e8ddc7, #c7c2a8);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--grey); font-size: 13px; text-align: center; padding: 20px;
+    flex-shrink: 0;
+  }
+
+  section { padding: 70px 0; border-top: 1px solid var(--line); }
+  .section-label { color: var(--terracotta); font-size: 13px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+  .section-title { font-size: 30px; font-weight: normal; margin-bottom: 36px; max-width: 600px; }
+
+  /* ABOUT */
+  .about p { font-size: 18px; color: var(--dark); max-width: 700px; margin-bottom: 18px; }
+
+  /* TIMELINE */
+  .timeline-item {
+    display: flex; gap: 32px; margin-bottom: 56px; flex-wrap: wrap;
+  }
+  .timeline-photo {
+    width: 220px; height: 160px; border-radius: 12px; flex-shrink: 0;
+    background: linear-gradient(160deg, #eee3cc, #d8cfae);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--grey); font-size: 12px; text-align: center; padding: 12px;
+  }
+  .timeline-content { flex: 1; min-width: 280px; }
+  .timeline-date { color: var(--terracotta); font-size: 13px; margin-bottom: 6px; letter-spacing: 0.5px; }
+  .timeline-role { font-size: 22px; margin-bottom: 4px; }
+  .timeline-org { color: var(--grey); font-size: 15px; margin-bottom: 14px; font-style: italic; }
+  .timeline-content p { font-size: 15.5px; color: var(--dark); margin-bottom: 10px; }
+  .achieve-box {
+    background: var(--card-bg); border: 1px solid var(--line); border-radius: 10px;
+    padding: 16px 20px; margin-top: 14px;
+  }
+  .achieve-box .achieve-label { font-size: 12px; color: var(--terracotta); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+  .achieve-box ul { margin-left: 18px; font-size: 14.5px; color: var(--dark); }
+  .achieve-box li { margin-bottom: 4px; }
+
+  /* EDUCATION */
+  .edu-card {
+    background: var(--card-bg); border: 1px solid var(--line); border-radius: 12px;
+    padding: 28px 30px;
+  }
+  .edu-card h3 { font-size: 20px; margin-bottom: 6px; font-weight: normal; }
+  .edu-card .edu-sub { color: var(--grey); font-size: 14.5px; margin-bottom: 14px; }
+  .edu-stats { display: flex; gap: 32px; margin: 16px 0; flex-wrap: wrap; }
+  .edu-stat .num { font-size: 26px; color: var(--terracotta); }
+  .edu-stat .label { font-size: 12.5px; color: var(--grey); text-transform: uppercase; letter-spacing: 0.5px; }
+  .edu-card .thesis { font-size: 14.5px; margin-top: 10px; padding-top: 14px; border-top: 1px dashed var(--line); }
+
+  /* GRID (research, activities) */
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--card-bg); border: 1px solid var(--line); border-radius: 12px;
+    padding: 26px; display: flex; flex-direction: column;
+  }
+  .card-photo {
+    width: 100%; height: 160px; border-radius: 8px; margin-bottom: 18px;
+    background: linear-gradient(160deg, #eee3cc, #d8cfae);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--grey); font-size: 12px; text-align: center; padding: 10px;
+    flex-shrink: 0;
+  }
+  .card .tag { font-size: 12px; color: var(--terracotta); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+  .card h3 { font-size: 17px; font-weight: normal; margin-bottom: 10px; line-height: 1.4; }
+  .card p { font-size: 14px; color: var(--grey); flex: 1; }
+  .card .meta { font-size: 12.5px; color: var(--grey); margin-top: 12px; font-style: italic; }
+
+  /* AWARDS */
+  .award-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; }
+  @media (max-width: 800px) { .award-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .award-grid { grid-template-columns: 1fr; } }
+  .award-card {
+    background: var(--card-bg); border: 1px solid var(--line); border-radius: 12px;
+    overflow: hidden;
+  }
+  .award-photo {
+    width: 100%; height: 120px;
+    background: linear-gradient(160deg, #eadfc6, #cdbfa0);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--grey); font-size: 11px; text-align: center; padding: 10px;
+  }
+  .award-body { padding: 16px 18px; }
+  .award-body .award-name { display: block; font-size: 15px; margin-bottom: 6px; }
+  .award-body .award-org { color: var(--grey); font-size: 12.5px; }
+
+  /* BEYOND WORK */
+  .beyond p { font-size: 18px; max-width: 700px; }
+  .beyond .quote {
+    font-size: 20px; font-style: italic; color: var(--terracotta);
+    margin: 24px 0; padding-left: 20px; border-left: 3px solid var(--terracotta);
+  }
+
+  /* CONTACT / FOOTER */
+  footer {
+    text-align: center; padding: 70px 0 50px; border-top: 1px solid var(--line);
+  }
+  footer h2 { font-size: 28px; font-weight: normal; margin-bottom: 14px; }
+  footer p { color: var(--grey); margin-bottom: 26px; }
+  .contact-links a {
+    color: var(--dark); text-decoration: none; margin: 0 14px; font-size: 15px;
+    border-bottom: 1px solid var(--terracotta); padding-bottom: 2px;
+  }
+  footer .copyright { margin-top: 50px; font-size: 12.5px; color: var(--grey); }
 </style>
 </head>
 <body>
-<div class="container">
 
-  <header>
-    <h1>[Your Name]</h1>
-    <div class="title">Supply Planner | OnPoint E-commerce</div>
-    <div class="contact">
-      <a href="mailto:quynhnm.log@gmail.com">Email</a>
-      <a href="https://linkedin.com/in/quynhnmlog" target="_blank">LinkedIn</a>
-      <a href="https://github.com/quynhnmlog-lgtm" target="_blank">GitHub</a>
+<div class="wrap">
+  <nav>
+    <div class="logo">NGUYỄN MẠNH QUỲNH</div>
+    <div>
+      <a href="#story">Story</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#research">Research</a>
+      <a href="#awards">Awards</a>
+      <a href="#contact">Contact</a>
     </div>
-  </header>
+  </nav>
 
-  <section>
-    <h2>About</h2>
-    <p>Supply Planner with experience in end-to-end demand-supply planning, inventory optimization, and process automation across multi-brand, multi-platform e-commerce operations in Vietnam.</p>
+  <!-- HERO -->
+  <section class="hero" style="border-top:none;">
+    <div class="hero-text">
+      <div class="hero-tag">Hello, I'm Quỳnh</div>
+      <h1>I build supply chains that keep promises — to customers, to farmers, to the planet.</h1>
+      <p>Supply Planner at OnPoint E-commerce, and a student of logistics who believes efficient supply chains can protect livelihoods as much as they protect margins.</p>
+    </div>
+    <div class="hero-photo">[ Replace with your portrait photo ]</div>
   </section>
 
-  <section>
-    <h2>Experience</h2>
-    <div class="job">
-      <div class="job-header">
-        <span class="job-title">Supply Planner (Fulltime) — OnPoint E-commerce</span>
-        <span class="job-date">Jan 2026 – Now</span>
+  <!-- ABOUT / STORY -->
+  <section id="story" class="about">
+    <div class="section-label">My Story</div>
+    <div class="section-title">Why supply chain, and why it matters beyond the warehouse</div>
+    <p>My academic and professional journey has strengthened a simple belief: a well-run supply chain is never just about moving boxes efficiently — it's about food reaching people before it spoils, farmers getting fair value for their harvest, and businesses growing without waste.</p>
+    <p>I'm particularly drawn to researching resilient logistics systems for agriculture and fisheries, where better supply chain design can directly improve food security, reduce post-harvest losses, and support environmental conservation. It's a niche that sits at the intersection of two things I care about — operational excellence and sustainable development — and it's where I want to spend the next chapter of my career.</p>
+    <p>Today, that belief shows up in day-to-day work at OnPoint: balancing inventory against demand for brands people trust, and in longer-term projects — from studying reverse logistics for pesticide packaging in the Mekong Delta, to building a knowledge-sharing platform that makes supply chain concepts accessible to Vietnamese students.</p>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-label">Experience</div>
+    <div class="section-title">Two years inside one of Southeast Asia's fastest-growing e-commerce enablers</div>
+
+    <div class="timeline-item">
+      <div class="timeline-photo">[ Photo: at work / dashboard / warehouse ]</div>
+      <div class="timeline-content">
+        <div class="timeline-date">January 2026 — Present</div>
+        <div class="timeline-role">Supply Planner</div>
+        <div class="timeline-org">OnPoint E-commerce, Ho Chi Minh City</div>
+        <p>I manage end-to-end supply planning for four high-value brands — Nivea, Danone, Ovaltine, and Blackmores — balancing inventory investment against service level to hit revenue targets during high-stakes campaigns and double-day events.</p>
+        <p>My work spans demand forecasting, S&OP alignment across purchasing and promotion teams, and controlling inventory health metrics (ATP, DOI, safety stock, SLOB) — always with the same question in mind: how do we keep products available without tying up capital in stock that won't move?</p>
+        <div class="achieve-box">
+          <div class="achieve-label">What this delivered</div>
+          <ul>
+            <li>Maintained ~98% in-stock rate during major campaigns, including double-day events</li>
+            <li>Reduced stockout incidents by 30% and slow-moving inventory by 27%</li>
+            <li>Kept DOI within the 18–30 day target range aligned with brand agreements</li>
+          </ul>
+        </div>
       </div>
-      <ul>
-        <li>Led end-to-end supply planning for 4 major brands (Nivea, Danone, Ovaltine, Blackmores), developing replenishment strategies based on forecasts to maintain ~98% in-stock during peak campaigns</li>
-        <li>Optimized inventory performance (ATP, DOI, SLOB) and warehouse allocation, reducing stockouts by 30% and slow-moving inventory by 27% while keeping DOI within 18–30 days</li>
-        <li>Drove cross-functional S&OP alignment (demand, budget, promotions) to balance service level and inventory investment, supporting consistent revenue growth</li>
-      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-photo">[ Photo: internship / team ]</div>
+      <div class="timeline-content">
+        <div class="timeline-date">June 2025 — December 2025</div>
+        <div class="timeline-role">Supply Planner Intern</div>
+        <div class="timeline-org">OnPoint E-commerce, Ho Chi Minh City</div>
+        <p>This is where I learned the fundamentals — reading sales data and demand patterns across dozens of SKUs, monitoring inventory health metrics, and coordinating with internal teams to keep stock ready ahead of promotional campaigns.</p>
+        <div class="achieve-box">
+          <div class="achieve-label">What this delivered</div>
+          <ul>
+            <li>Supported planning for 150+ SKUs across 3 brands (Kewpie, Brand's Suntory, Sweet Clean Home)</li>
+            <li>Helped maintain stable stock availability throughout campaign periods</li>
+            <li>Reduced data/reporting errors through more structured tracking practices</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section>
-    <h2>Skills</h2>
-
-    <div class="skill-group">
-      <span class="skill-label">Demand & Supply Planning:</span>
-      Forecast accuracy analysis, replenishment strategy, DOI/ATP optimization, S&OP alignment
-    </div>
-
-    <div class="skill-group">
-      <span class="skill-label">Inventory & Working Capital Management:</span>
-      Near-expired stock control, slow-moving inventory reduction, multi-partner warehouse allocation (MCL, TNSL, Octopus)
-    </div>
-
-    <div class="skill-group">
-      <span class="skill-label">Data Analysis & Statistical Modelling:</span>
-      Python (Pandas), IBM SPSS (Logistic/Linear Regression, sentiment analysis)
-    </div>
-
-    <div class="skill-group">
-      <span class="skill-label">Process Automation & Reporting:</span>
-      ETL pipelines, VBA workflow orchestrators, Power Query, dashboarding
-    </div>
-
-    <div class="skill-group">
-      <span class="skill-label">Cross-functional & Bilingual Communication:</span>
-      English (IELTS 7.0), Vietnamese (Native)
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-label">Education</div>
+    <div class="section-title">Where the foundation was built</div>
+    <div class="edu-card">
+      <h3>B.Sc. Logistics and Supply Chain Management</h3>
+      <div class="edu-sub">Ho Chi Minh City University of Technology and Engineering (HCMUTE) · Sep 2022 – Jul 2026</div>
+      <div class="edu-stats">
+        <div class="edu-stat"><div class="num">3.87/4.0</div><div class="label">GPA · Top 1% of cohort</div></div>
+        <div class="edu-stat"><div class="num">8.7/10</div><div class="label">Bachelor thesis score</div></div>
+      </div>
+      <p style="font-size:14.5px; color:var(--grey);">Core coursework: Logistics Strategic Management, Management Information Systems, Transportation Management, International Business, Financial Management, Operation Management</p>
+      <div class="thesis"><strong>Bachelor thesis:</strong> "Analysis and improvement of supply planning practices in an e-commerce enabler: a case study of OnPoint"</div>
     </div>
   </section>
 
-  <footer>
-    © 2026 [Your Name]. Built with GitHub Pages.
+  <!-- RESEARCH -->
+  <section id="research">
+    <div class="section-label">Research Projects</div>
+    <div class="section-title">Where curiosity turned into competitions</div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-photo">[ Photo: survey fieldwork / presentation slide ]</div>
+        <div class="tag">Consolation Prize · May 2024</div>
+        <h3>Factors Influencing Second-hand Clothing Purchase Behavior Among Youth in HCMC</h3>
+        <p>Quantitative study grounded in the Theory of Planned Behavior. Analyzed 130 survey responses (SPSS: Cronbach's Alpha, EFA, multiple linear regression), identifying three behavioral drivers explaining 59.6% of variance in purchase intention.</p>
+        <div class="meta">Student Research Competition in Socio-Economic Studies</div>
+      </div>
+      <div class="card">
+        <div class="card-photo">[ Photo: Tiền Giang fieldwork / interview ]</div>
+        <div class="tag">Runner-up · November 2024</div>
+        <h3>Optimization of Reverse Supply Chain for Collecting Pesticide Packaging in Tiền Giang Province</h3>
+        <p>Qualitative research through in-depth interviews with 27 stakeholders — farmers, local officials, manufacturers, and retailers — leading to proposed solutions to improve collection efficiency and reduce environmental risk.</p>
+        <div class="meta">Vietnam Young Logistics Talents Competition</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL ACTIVITIES -->
+  <section id="activities">
+    <div class="section-label">Beyond the Classroom</div>
+    <div class="section-title">Building community, and looking beyond Vietnam</div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-photo">[ Photo: Chain-ge Maker post / content ]</div>
+        <div class="tag">Founder · Since Aug 2025</div>
+        <h3>Chain-ge Maker</h3>
+        <p>A supply chain knowledge-sharing platform for students (170+ followers), breaking down topics like demand forecasting and global logistics disruptions into accessible, real-world case studies. 3,000+ content views to date.</p>
+        <div class="meta">Mission: democratize supply chain knowledge for young Vietnamese talent</div>
+      </div>
+      <div class="card">
+        <div class="card-photo">[ Photo: UBD-AUN Summer Camp team ]</div>
+        <div class="tag">Participant · July 2026</div>
+        <h3>UBD-AUN Summer Camp, Brunei</h3>
+        <p>A 10-day international program with 60+ universities from 10 countries. Worked in a 20-member team designing a sustainable coastal city project — my first deep dive into how logistics and climate resilience intersect.</p>
+        <div class="meta">ASEAN University Network</div>
+      </div>
+      <div class="card">
+        <div class="card-photo">[ Photo: Muara Fish Landing visit ]</div>
+        <div class="tag">Participant · July 2026</div>
+        <h3>Ocean Week 2026, Brunei</h3>
+        <p>An international ocean sustainability program with 200+ participants. Visited Muara International Fish Landing to see fisheries logistics firsthand — the moment my interest in sustainable seafood supply chains became concrete.</p>
+        <div class="meta">Marine conservation & the blue economy</div>
+      </div>
+      <div class="card">
+        <div class="card-photo">[ Photo: team working session ]</div>
+        <div class="tag">Team Leader · 4 members</div>
+        <h3>Leading Research Under Pressure</h3>
+        <p>Led a team of 4 across two national competitions, coordinating research design, data collection, and analysis for both survey-based and interview-based studies, while mentoring teammates in SPSS, Excel, and Python.</p>
+        <div class="meta">Second Prize + Consolation Prize delivered</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <section id="awards">
+    <div class="section-label">Awards & Recognition</div>
+    <div class="section-title">A few milestones along the way</div>
+    <div class="award-grid">
+      <div class="award-card">
+        <div class="award-photo">[ Photo: award ceremony ]</div>
+        <div class="award-body">
+          <span class="award-name">Runner-up — Vietnam Young Logistics Talents Competition 2024</span>
+          <span class="award-org">VALOMA</span>
+        </div>
+      </div>
+      <div class="award-card">
+        <div class="award-photo">[ Photo: award ceremony ]</div>
+        <div class="award-body">
+          <span class="award-name">Champion — UTE Logistics Talents Competition 2024</span>
+          <span class="award-org">HCMUTE</span>
+        </div>
+      </div>
+      <div class="award-card">
+        <div class="award-photo">[ Photo: award ceremony ]</div>
+        <div class="award-body">
+          <span class="award-name">Consolation Prize — LogistiHub Competition 2025</span>
+          <span class="award-org">HCMUTE</span>
+        </div>
+      </div>
+      <div class="award-card">
+        <div class="award-photo">[ Photo: award ceremony ]</div>
+        <div class="award-body">
+          <span class="award-name">Consolation Prize — Student Scientific Research in Socio-Economics</span>
+          <span class="award-org">HCMUTE</span>
+        </div>
+      </div>
+      <div class="award-card">
+        <div class="award-photo">[ Photo: award ceremony ]</div>
+        <div class="award-body">
+          <span class="award-name">Finalist — Lương Văn Can Entrepreneurship Award 2026</span>
+          <span class="award-org">Saigon Businessmen Magazine</span>
+        </div>
+      </div>
+      <div class="award-card">
+        <div class="award-photo">[ Photo: certificate ]</div>
+        <div class="award-body">
+          <span class="award-name">Academic Excellence Scholarship, 2022–2026</span>
+          <span class="award-org">HCMUTE</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEYOND WORK -->
+  <section class="beyond">
+    <div class="section-label">Beyond Work</div>
+    <div class="section-title">What keeps me grounded</div>
+    <p>[ This is a placeholder — add a short, personal paragraph here about a hobby, value, or perspective outside of work. For example: what you do to unwind, a value your family instilled in you, or why sustainability matters to you personally. ]</p>
+    <div class="quote">"[ Optional: a short personal quote or motto you live by ]"</div>
+  </section>
+
+  <!-- CONTACT -->
+  <footer id="contact">
+    <h2>Let's talk</h2>
+    <p>Open to conversations about supply chain, sustainability, or research collaboration.</p>
+    <div class="contact-links">
+      <a href="mailto:quynhnm.log@gmail.com">Email</a>
+      <a href="tel:+84964470552">Phone</a>
+      <a href="https://linkedin.com/in/[your-linkedin]" target="_blank">LinkedIn</a>
+    </div>
+    <div class="copyright">© 2026 Nguyễn Mạnh Quỳnh · Ho Chi Minh City, Vietnam</div>
   </footer>
-
 </div>
+
 </body>
 </html>
